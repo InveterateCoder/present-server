@@ -1,7 +1,7 @@
 require('dotenv').config()
 const path = require('path')
 const express = require('express')
-const cors = require('cors')
+//const cors = require('cors')
 const apiRouter = require('./server/apiRouter')
 const { connectToDb } = require('./server/db');
 
@@ -11,8 +11,8 @@ const { connectToDb } = require('./server/db');
 
   const app = express()
 
-  app.use(cors())
-  app.use(express.static(path.resolve(__dirname, 'client', 'dist')))
+  //app.use(cors())
+  app.use(express.static(path.resolve(__dirname, 'public')))
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
   app.use('/api', apiRouter)
