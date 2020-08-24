@@ -11,7 +11,13 @@ const { connectToDb } = require('./server/db');
   const app = express()
 
   //app.use(cors())
-  app.use(express.static(path.resolve(__dirname, 'public')))
+  app.use(express.static('public', {
+    etag: true,
+    lastModified: true,
+    setHeaders: (res, path) => {
+      res.setHeader('Cache-Control', 'public, max-age=31536000')
+    }
+  }))
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
   app.use('/api', apiRouter)
