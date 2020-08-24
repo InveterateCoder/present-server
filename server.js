@@ -6,7 +6,6 @@ const apiRouter = require('./server/apiRouter')
 const { connectToDb } = require('./server/db');
 
 (async function () {
-  const PORT = process.env.PORT || 7000
   await connectToDb()
 
   const app = express()
@@ -20,5 +19,8 @@ const { connectToDb } = require('./server/db');
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
   })
 
-  app.listen(PORT)
+  const server = app.listen(process.env.PORT || 5000, function () {
+    const port = server.address().port
+    console.log("Express is working on port " + port)
+  })
 })()
