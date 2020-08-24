@@ -4,7 +4,6 @@ const express = require('express')
 //const cors = require('cors')
 const apiRouter = require('./server/apiRouter')
 const { connectToDb } = require('./server/db');
-console.log('aaaaaaaaaaaadkfjdkfjkdjalsfjalsfjlas kasdjfka jkdfsaj kfdjs')
 
 (async function () {
   await connectToDb()
