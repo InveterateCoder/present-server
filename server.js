@@ -13,7 +13,6 @@ const { connectToDb } = require('./server/db');
     app.use(cors())
     app.use(express.static('public'))
   } else {
-    console.log('production')
     app.use(express.static('public', {
       etag: true,
       lastModified: true,
